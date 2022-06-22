@@ -33,22 +33,22 @@ function calculateResult(calculationType){
   const enteredNumber = getUserNumberInput();
   const initialResult = currentResult;
   let mathOperator;
-  if (calculationType = "ADD"){
+  if (calculationType === "ADD"){
     currentResult += enteredNumber;
     mathOperator = "+";
   }
-  else (calculationType = "SUBTRACT"){
+  else if (calculationType === "SUBTRACT"){
     currentResult -= enteredNumber;
     mathOperator = "-";
   }
-  // else if (calculationType = "MULTIPLY"){
-  //   currentResult -= enteredNumber;
-  //   mathOperator = "*";
-  // }
-  // else if (calculationType = "DIVIDE"){
-  //   currentResult -= enteredNumber;
-  //   mathOperator = "/";
-  // }
+  else if (calculationType === "MULTIPLY"){
+    currentResult -= enteredNumber;
+    mathOperator = "*";
+  }
+  else if (calculationType === "DIVIDE"){
+    currentResult -= enteredNumber;
+    mathOperator = "/";
+  }
 
   createAndWriteOutput(mathOperator, initialResult, enteredNumber);
   writeToLog(calculationType, initialResult, enteredNumber, currentResult);
