@@ -9,7 +9,7 @@ const RESULT_PLAYER_WIN = "PLAYER_WIN";
 const RESULT_COMPUTER_WIN = "COMPUTER_WIN";
 
 
-const getPlayerChoice = function () {
+const getPlayerChoice =  () => {
   const playerChoice = prompt(`${ROCK}, ${PAPER} or ${SCISSORS}?`, '').toUpperCase();
   if (
     playerChoice !== ROCK &&
@@ -22,7 +22,7 @@ const getPlayerChoice = function () {
   return playerChoice;
 };
 
-const getComputerChoice = function () {
+const getComputerChoice =  () => {
   const randomValue = Math.random();
   if (randomValue < 0.34) {
     return ROCK;
@@ -35,7 +35,7 @@ const getComputerChoice = function () {
   }
 }
 
-const getWinner = function (pChoice, cChoice) {
+const getWinner =  (pChoice, cChoice) => {
   if (pChoice === cChoice) {
     return RESULT_DRAW;
   }
@@ -50,10 +50,20 @@ const getWinner = function (pChoice, cChoice) {
   }
 }
 
-startGameBtn.addEventListener('click', function () {
+startGameBtn.addEventListener('click', () => {
   console.log('Game is starting...');
   const playerChoice = getPlayerChoice();
   const computerChoice = getComputerChoice();
   const winner = getWinner(playerChoice, computerChoice);
-  console.log(winner);
+  let message = `You picked ${playerChoice}, computer picked ${computerChoice} therefor you `;
+  if (winner === RESULT_DRAW){
+    message = message + "had a draw."
+  }
+  else if (winner === RESULT_PLAYER_WIN){
+    message = message + "win.";
+  }
+  else {
+    message = message + "lost.";
+  }
+  alert(message);
 });
